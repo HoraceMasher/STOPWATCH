@@ -31,4 +31,9 @@ function startTime (){
 } 
 
 // set events to keep stopwatch live.
+let startBtn = document.getElementById("startBtn");
+startBtn.addEventListener("click", startTime);
+
+
+
 
