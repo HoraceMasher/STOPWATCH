@@ -63,5 +63,15 @@ let stopTime = getHours +minutes + seconds +miliSeconds ;
 x.innerHTML= stopTime;
 
 //display control buttons
-let showStart = document.getElementById ("statBtn")
+let showStart = document.getElementById ("startBtn")
 showStart.style.display = "inline-Block"
+let showPause = document.getElementById("pauseBtn")
+showPause.style.display= "inline-Block"
+
+//reset watch
+clearTimeout (clearTime);
+// call the pause function
+
+    let pause =document.getElementById ("pauseBtn")
+    pauseBtn.addEventListener ('click', pauseTime);
+    pauseTime();
