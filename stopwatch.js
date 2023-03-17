@@ -19,7 +19,7 @@ let miliSecs,secs,mins, getHours; function startWatch(){
     }
 
     //change HTML page
-let x= document.getElementById("time_Display") ; x.innerHTML = "Time:" + getHours + mins + seconds +miliSeconds;
+let x= document.getElementById("time_Display") ; x.innerHTML = 'time: ' + getHours + mins + seconds +miliSeconds;
 seconds++ ;
 clearTime = setTimeout ( "startWatch()" ,1000 ) 
 
@@ -35,8 +35,33 @@ let startBtn = document.getElementById("startBtn");
 startBtn.addEventListener("click", startTime);
 
 //pausewatch
-function pauseTime ()
+function pauseTime () {
+    if( miliSeconds!=0 || seconds!=0 || minutes!=0 || hours!=0);
+}
 
+//display time before reseting
+let showTime = document.getElementById ("showTime");
+showTime.style.display = "block";
+let time = getHours + mins + secs + miliSecs ;
+showTime.innerHTML = "time: ";
 
+// reset stopwatch
+miliSeconds = 0;
+seconds = 0;
+minutes= 0;
+hours= 0;
 
+miliSecs = 0 + miliSeconds;
+secs = 0 + seconds +':';
+mins = 0 + minutes + ':';
+hours = 0 + getHours + ':';
 
+//display stopwatch after it has been paused
+
+let x = document.getElementById ("showTime");
+let stopTime = getHours +minutes + seconds +miliSeconds ;
+x.innerHTML= stopTime;
+
+//display control buttons
+let showStart = document.getElementById ("statBtn")
+showStart.style.display = "inline-Block"
