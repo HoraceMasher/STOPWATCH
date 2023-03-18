@@ -1,77 +1,92 @@
-//start stopwatch
-// initialise the global variables
-let count = 0;
-let clearTime = 0;
-let miliSeconds= 0;
-let seconds = 0 ;
-let minutes = 0 ;
-let hours = 0 ;
-var clearState;
-let miliSecs,secs,mins, getHours; function startWatch(){
-    if (miliSeconds===999) {
-        miliSeconds= 0 ;seconds = seconds +1 ;
+window.onload = function () {
+    var miliseconds = 00
+    var seconds = 00; 
+    var mins = 00;
+    var hrs =00 ;
+    var hours = document.getElementById("hrs")
+    var minutes = document.getElementById("mins")
+    var secs = document.getElementById("seconds")
+    var msecs = document.getElementById("miliseconds")
+    var buttonStart = document.getElementById('startBtn');
+    var buttonStop = document.getElementById('pauseBtn');
+    var buttonReset = document.getElementById('resetBtn');
+    var Interval ;
+  
+    buttonStart.onclick = function() {
+      
+      clearInterval(Interval);
+       Interval = setInterval(startTimer, 10);
     }
-    if ( seconds===59) {
-        seconds = 0 ; minutes= minutes +1 ;
+    
+      buttonStop.onclick = function() {
+         clearInterval(Interval);
     }
-    if ( minutes===59) {
-        minutes = 0 ;hours = hours =1 ;
+    
+  
+    buttonReset.onclick = function() {
+       clearInterval(Interval);
+      hrs = "00";
+      mins = "00";
+      seconds = "00";
+        miliseconds = "00";
+      hours.innerHTML = hrs;
+      minutes.innerHTML = mins;
+      secs.innerHTML = seconds;
+        msecs.innerHTML = miliseconds;
     }
+    
+     
+    
+    function startTimer () {
+      miliseconds++; 
+      
+      if(miliseconds <= 9){
+        msecs.innerHTML = "0" + miliseconds;
+      }
+      
+      if (miliseconds > 9){
+        msecs.innerHTML =miliseconds;
+        
+      } 
+      
+      if (miliseconds> 99) {
+        console.log("seconds");
+        seconds++;
+        secs.innerHTML = seconds;
+        miliseconds = 0;
+        msecs.innerHTML = "0"+ 0;
+      }
+     
+      if (seconds <= 9) {
+        secs.innerHTML ="0" + seconds;
+      }
+      if (seconds >59) {
+        secs.innerHTML = "0" + seconds;
+      }
+      
+      if (seconds > 59) {
+        console.log ("mins");
+        mins++;
+        minutes.innerHTML =  mins;
+        seconds = 0;
+        secs.innerHTML = "0" + 0;
+      }
+    
+      if (mins <= 9) {
+        minutes.innerHTML ="0" + mins;
+      }
 
-    //change HTML page
-let x= document.getElementById("time_Display") ; x.innerHTML = 'time: ' + getHours + mins + seconds +miliSeconds;
-seconds++ ;
-clearTime = setTimeout ( "startWatch()" ,1000 ) 
+      if (mins > 59) {
+        console.log ("hrs");
+        hrs++;
+        hours.innerHTML = hrs;
+        mins = 0;
+        hours.innerHTML = "0" + 0;
 
-}
-// start stopwatch funvtion
-function startTime (){
-    if ( miliSeconds===0 && seconds===0 && minutes ===0 && hours===0)
-    startWatch() ;
-} 
-
-// set events to keep stopwatch live.
-let startBtn = document.getElementById("startBtn");
-startBtn.addEventListener("click", startTime);
-
-//pausewatch
-function pauseTime () {
-    if( miliSeconds!=0 || seconds!=0 || minutes!=0 || hours!=0);
-}
-
-//display time before reseting
-let showTime = document.getElementById ("showTime");
-showTime.style.display = "block";
-let time = getHours + mins + secs + miliSecs ;
-showTime.innerHTML = "time: ";
-
-// reset stopwatch
-miliSeconds = 0;
-seconds = 0;
-minutes= 0;
-hours= 0;
-
-miliSecs = 0 + miliSeconds;
-secs = 0 + seconds +':';
-mins = 0 + minutes + ':';
-hours = 0 + getHours + ':';
-
-//display stopwatch after it has been paused
-
-let x = document.getElementById ("showTime");
-let stopTime = getHours +minutes + seconds +miliSeconds ;
-x.innerHTML= stopTime;
-
-//display control buttons
-let showStart = document.getElementById ("startBtn")
-showStart.style.display = "inline-Block"
-let showPause = document.getElementById("pauseBtn")
-showPause.style.display= "inline-Block"
-
-//reset watch
-clearTimeout (clearTime);
-// call the pause function
-
-    let pause =document.getElementById ("pauseBtn")
-    pauseBtn.addEventListener ('click', pauseTime);
-    pauseTime();
+      }
+    }
+    
+    if (hrs<= 9) {
+      hours.innerHTML ="0" + hrs;
+    }
+  }

@@ -32,7 +32,7 @@ h1 {
     border-radius: 10px;
 }
 
-#time_Display{
+p{
     position: relative;
     width: 92%;
     background-color: #fff;
@@ -93,8 +93,3 @@ transition-duration: 0.5s;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);;
 }
 
-#showTime {
-    display: none;
-    font-size: 16px;
-    font-weight: bold;
-}
